@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --background: 220 30% 98%;
+    --foreground: 224 30% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 30% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 30% 14%;
+
+    --primary: 233 72% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 224 25% 22%;
+
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 12% 44%;
+
+    --accent: 233 40% 94%;
+    --accent-foreground: 233 60% 34%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 88%;
+    --input: 220 18% 84%;
+    --ring: 233 72% 52%;
+
+    --brand-blue: 216 95% 54%;
+    --brand-indigo: 233 72% 52%;
+    --brand-violet: 258 78% 62%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 228 26% 8%;
+    --foreground: 220 20% 92%;
+
+    --card: 228 24% 11%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 228 24% 11%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 234 80% 66%;
+    --primary-foreground: 228 30% 8%;
+
+    --secondary: 228 20% 17%;
+    --secondary-foreground: 220 20% 88%;
+
+    --muted: 228 20% 17%;
+    --muted-foreground: 220 12% 60%;
+
+    --accent: 234 36% 20%;
+    --accent-foreground: 234 70% 82%;
+
+    --destructive: 0 64% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 18% 20%;
+    --input: 228 18% 22%;
+    --ring: 234 80% 66%;
+
+    --brand-blue: 216 96% 62%;
+    --brand-indigo: 234 80% 66%;
+    --brand-violet: 258 80% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+  .bg-dot {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
+  }
+  .glass {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.25);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+  background-clip: content-box;
+}
+
+/* Mermaid 图表主题 */
+.mermaid-wrap svg {
+  max-width: 100%;
+  height: auto;
+}
