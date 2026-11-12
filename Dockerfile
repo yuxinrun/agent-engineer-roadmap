@@ -10,6 +10,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV STATIC_EXPORT=1
+ENV NEXT_PUBLIC_BASE_PATH=/agent-engineer-roadmap
+ENV NEXT_PUBLIC_SITE_URL=https://yuxinrun.github.io/agent-engineer-roadmap
 RUN npm run build
 
 # ---- 运行阶段：nginx 托管静态文件 ----

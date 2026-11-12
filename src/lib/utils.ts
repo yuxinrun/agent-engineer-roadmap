@@ -11,14 +11,19 @@ export function withSiteTitle(title?: string) {
   return title ? `${title} | ${siteName}` : siteName;
 }
 
+/** 站点根地址，优先读取构建环境变量（GitHub Pages 构建时注入） */
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://yuxinrun.github.io/agent-engineer-roadmap"
+).replace(/\/$/, "");
+
 /** 站点元信息 */
 export const siteConfig = {
   name: "Agent 学习地图",
   nameEn: "AI Agent Engineer Roadmap",
   description:
     "一站式 AI Agent 学习路线，整合优质文档、视频教程、开源项目和企业级实战，帮助程序员系统掌握 Agent 开发能力。",
-  url: "https://yuxinrun.github.io/agent-engineer-roadmap",
-  basePath: "/agent-engineer-roadmap",
+  url: siteUrl,
   keywords: [
     "AI Agent学习路线",
     "AI Agent开发教程",

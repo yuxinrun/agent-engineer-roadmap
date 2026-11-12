@@ -23,22 +23,22 @@ Next.js 14 (App Router) · React 18 · TypeScript · Tailwind CSS · shadcn/ui �
 
 ## 本地运行
 
-> 项目配置了 `basePath: /agent-engineer-roadmap`，所有路由都位于该子路径下。
-
 ```bash
 # 安装依赖
 npm install
 
 # 启动开发服务器
 npm run dev
-# 访问 http://localhost:3000/agent-engineer-roadmap
+# 访问 http://localhost:3000
 ```
 
-## 生产构建（静态导出）
+## 生产构建
 
 ```bash
-npm run build   # 产物输出到 out/ 目录
+npm run build   # 默认输出 standalone 产物（配合 npm run start）
 ```
+
+> GitHub Pages 静态导出：构建时设置 `STATIC_EXPORT=1` 会输出到 `out/` 目录，并应用 `NEXT_PUBLIC_BASE_PATH` 子路径（见 `.github/workflows/deploy.yml`）。
 
 ## GitHub Pages 部署
 
