@@ -15,22 +15,27 @@ const STATS = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 bg-grid mask-fade-b pointer-events-none" />
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[720px] rounded-full bg-gradient-to-r from-brand-blue/20 via-brand-indigo/20 to-brand-violet/20 blur-3xl pointer-events-none" />
+    <section className="relative">
+      {/* 背景装饰：独立裁剪层，避免 overflow-hidden 裁切标题文字 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-grid mask-fade-b" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[720px] rounded-full bg-gradient-to-r from-brand-blue/20 via-brand-indigo/20 to-brand-violet/20 blur-3xl" />
+      </div>
 
-      <div className="container relative py-16 sm:py-24 lg:py-28">
+      <div className="container relative z-10 py-16 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground mb-6 animate-fade-in">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
             面向程序员转型 · 16~24 周系统学习路线
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-[1.1] animate-fade-in-up">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.3] animate-fade-in-up">
             从普通程序员到
-            <span className="block bg-gradient-to-r from-brand-blue via-brand-indigo to-brand-violet bg-clip-text text-transparent">
-              AI Agent 工程师
+            {/* 外层 block 负责换行与间距，内层 inline-block 让渐变贴合文字宽度 */}
+            <span className="block mt-1 pb-1 sm:mt-2">
+              <span className="inline-block bg-gradient-to-r from-brand-blue via-brand-indigo to-brand-violet bg-clip-text text-transparent">
+                AI Agent 工程师
+              </span>
             </span>
           </h1>
 
