@@ -29,11 +29,14 @@ export function Hero() {
             面向程序员转型 · 16~24 周系统学习路线
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.3] animate-fade-in-up">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight !leading-[1.35] animate-fade-in-up">
             从普通程序员到
-            {/* 外层 block 负责换行与间距，内层 inline-block 让渐变贴合文字宽度 */}
-            <span className="block mt-1 pb-1 sm:mt-2">
-              <span className="inline-block bg-gradient-to-r from-brand-blue via-brand-indigo to-brand-violet bg-clip-text text-transparent">
+            {/* 外层 block 负责换行与间距；内层 inline-block 让渐变贴合文字宽度。
+                上下 padding 扩大渐变背景的绘制区域，避免字母 descender（g）和
+                中文字形溢出 bg-clip-text 的可裁切范围而变透明。
+                !important 行高用于覆盖 text-6xl 自带的 line-height: 1。 */}
+            <span className="block mt-1 sm:mt-2">
+              <span className="inline-block pt-[0.08em] pb-[0.25em] bg-gradient-to-r from-brand-blue via-brand-indigo to-brand-violet bg-clip-text text-transparent">
                 AI Agent 工程师
               </span>
             </span>
